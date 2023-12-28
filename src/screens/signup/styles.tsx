@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white
     },
     contentContainerStyle: {
+        paddingTop:'30%',
         paddingVertical: mvs(30),
         paddingHorizontal: mvs(20)
     },

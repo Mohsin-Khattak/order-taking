@@ -75,7 +75,7 @@ const LoginScreen = props => {
                   : undefined
               }
               keyboardType={'email-address'}
-              placeholder={t('email')}
+              placeholder={t('Email')}
               onChangeText={handleChange('email')}
               onBlur={handleBlur('email')}
               value={values.email}
@@ -87,7 +87,7 @@ const LoginScreen = props => {
                   ? `${t(errors?.password)}`
                   : undefined
               }
-              placeholder={t('password_place')}
+              placeholder={t('Password')}
               label={t('password')}
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
@@ -99,7 +99,7 @@ const LoginScreen = props => {
               style={{ alignSelf: 'flex-end', marginBottom: mvs(15) }}
               onPress={() => navigate('ForgotPassword')}>
               <Medium
-                label={t('forgot_password')}
+                label={t('Forgot password')}
                 style={{ textDecorationLine: 'underline' }}
               />
             </TouchableOpacity>
@@ -116,7 +116,7 @@ const LoginScreen = props => {
               style={{ alignSelf: 'center', marginTop: mvs(20) }}
               onPress={() => navigate('Signup')}>
               <Medium
-                label={t('dont_have_account')}
+                label={t('Dont have account')}
                 style={{ textDecorationLine: 'underline' }}
               />
             </TouchableOpacity>

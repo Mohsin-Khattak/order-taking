@@ -5,16 +5,17 @@ import Medium from 'typography/medium-text'
 type props = {
     style?: StyleProp<ViewStyle>
     label?: string
+    numberOfLines?:number,
     color?: ColorValue
     children?: JSX.Element | JSX.Element[]
 }
 export const EmptyList = (props: props) => {
-    const { children, style, label = 'No Result Found', color = colors.black } = props;
+    const { children, style, label = 'No Result Found', color = colors.black,numberOfLines } = props;
     return (
         <View
             style={[styles.contentContainerStyle, style]}>
             {children}
-            <Medium label={label} color={color} />
+            <Medium style={{ textAlign:'center'}} numberOfLines={numberOfLines} label={label} color={color} />
         </View>
     )
 }
@@ -23,5 +24,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+       
     }
 })
