@@ -3,6 +3,7 @@ import { TabBar } from 'navigation/curvedtabs';
 import React from 'react';
 import { width } from 'config/metrices';
 import CustomDrawerContent from './drawer-content';
+import TabNavigator from 'navigation/tab-navigation';
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
@@ -16,7 +17,7 @@ const DrawerNavigation = () => {
         headerShown: false,
       }}
       drawerContent={props => <CustomDrawerContent {...props} />}>
-      <Drawer.Screen name="TabBar" component={TabBar} />
+      <Drawer.Screen name="TabNavigator" component={TabNavigator} />
     </Drawer.Navigator>
   );
 };
