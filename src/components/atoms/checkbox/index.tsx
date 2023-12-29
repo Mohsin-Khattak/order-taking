@@ -24,8 +24,9 @@ export const Checkbox = (props: IProps) => {
 };
 const styles = StyleSheet.create({
     container: {
-        borderWidth: StyleSheet.hairlineWidth,
-        borderColor: colors.border,
+        // borderWidth: StyleSheet.hairlineWidth,
+        borderWidth:mvs(1),
+        borderColor: colors.black,
         borderRadius: mvs(5),
         height: mvs(20),
         width: mvs(20),

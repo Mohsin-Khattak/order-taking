@@ -55,6 +55,7 @@ type props = {
   error?: string;
   id?: any;
   mtop?: number;
+  children?: JSX.Element | JSX.Element[],
   keyboardType?: KeyboardTypeOptions | undefined;
   onBlur?: (e?: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 };
@@ -128,6 +129,7 @@ const PrimaryInput = (props: props) => {
   const [secure, setSecure] = useState(true);
   const {language} = useAppSelector(s => s.user);
   const {
+    children,
     onChangeText,
     value,
     style,
@@ -153,6 +155,7 @@ const PrimaryInput = (props: props) => {
         {isRequired ? <Regular color={colors.red} label={' *'} /> : null}
       </Regular> */}
       <View style={[styles.Container, containerStyle]}>
+       {children}
         <TextInput
           editable={editable}
           multiline={multiline}
@@ -366,7 +369,7 @@ const styles = StyleSheet.create({
     borderWidth: mvs(0.7),
     borderColor: colors.primary,
     height: mvs(50),
-    paddingTop: mvs(7),
+    // paddingTop: mvs(7),
     borderRadius: mvs(10),
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -411,7 +414,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     fontSize: mvs(18),
     flex: 1,
-    height: mvs(40),
+    height: mvs(50),
     // width: mvs(275),
     padding: mvs(0),
   },

@@ -22,6 +22,7 @@ import SavedAddress from 'screens/saved-address';
 import SavedVehicles from 'screens/saved-vehicles';
 import SavedCards from 'screens/saved-cards';
 import Orders from 'screens/orders';
+import Profile from 'screens/profile';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
@@ -34,7 +35,7 @@ export const RootNavigator = () => {
         barStyle={'dark-content'}
       />
       <Stack.Navigator
-        initialRouteName="LanguageScreen"
+        initialRouteName="Profile"
         screenOptions={horizontalAnimation}>
         <Stack.Group>
           <Stack.Screen name="Splash" component={Splash} />
@@ -44,6 +45,7 @@ export const RootNavigator = () => {
           <Stack.Screen name="SavedAddress" component={SavedAddress} />
           <Stack.Screen name="SavedVehicles" component={SavedVehicles} />
           <Stack.Screen name="Orders" component={Orders} />
+          <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="Onboarding" component={Onboarding} />
           <Stack.Screen name="Me" component={Me} />
           <Stack.Screen name="Login" component={LoginScreen} />
