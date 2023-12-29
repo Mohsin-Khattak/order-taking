@@ -34,7 +34,7 @@ export const RootNavigator = () => {
         barStyle={'dark-content'}
       />
       <Stack.Navigator
-        initialRouteName="Orders"
+        initialRouteName="LanguageScreen"
         screenOptions={horizontalAnimation}>
         <Stack.Group>
           <Stack.Screen name="Splash" component={Splash} />

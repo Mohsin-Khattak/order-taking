@@ -11,13 +11,19 @@ const styles = StyleSheet.create({
     paddingVertical: mvs(30),
     paddingHorizontal: mvs(20),
   },
-  lan: {
-    height: mvs(120),
-    marginTop: mvs(20),
-    backgroundColor: colors.primary,
+  lan: 
+    {
+      paddingVertical: mvs(10),
+      borderBottomWidth: mvs(1),
+      borderBottomColor: colors.gray,
+      alignItems: 'center',
+      flexDirection:'row',
+      justifyContent:'space-between'
+    
   },
   btnText: {
-    fontSize: mvs(24),
+    fontSize: mvs(16),
+    color:colors.black
   },
 });
 export default styles;
