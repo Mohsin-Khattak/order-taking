@@ -60,8 +60,6 @@ import UserTab from 'screens/user-tab';
 const Tab = createBottomTabNavigator();
 const BottomTab = createNativeStackNavigator();
 
-const tabBarHeight = 60; // Set your desired height here
-
 const TabNavigator = () => {
   return (
     <Tab.Navigator
@@ -87,9 +85,7 @@ const TabNavigator = () => {
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: 'gray',
       })}
-      tabBarOptions={{
-        tabBarStyle: { height: tabBarHeight },
-      }}
+   
     >
       <BottomTab.Screen name="HomeTab" component={HomeTab} />
       <BottomTab.Screen name="Departments" component={DepartmentTab} />

@@ -8,16 +8,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   body: {
-    paddingVertical: mvs(30),
+    paddingVertical: mvs(10),
     paddingHorizontal: mvs(20),
   },
-  lan: {
-    height: mvs(120),
-    marginTop: mvs(20),
-    backgroundColor: colors.primary,
+  contentContainerStyle: {
+    flexGrow: 1,
+    paddingHorizontal: mvs(20),
+    justifyContent:'space-between'
   },
-  btnText: {
-    fontSize: mvs(24),
-  },
+
+
 });
 export default styles;

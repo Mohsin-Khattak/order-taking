@@ -6,12 +6,15 @@ import { I18nManager, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Medium from 'typography/medium-text';
 import { Row } from '../row';
+import Regular from 'typography/regular-text';
 const Header = ({
   style = {},
   mtop = 0,
   title,
   back = true,
   onAdd,
+  onCart,
+  cart=false,
   add=false,
   ...props
 }) => {
@@ -44,6 +47,21 @@ const Header = ({
         ) : (
           <View />
         )}
+        {cart ? (
+          <TouchableOpacity onPress={onCart} style={{backgroundColor:colors.primary,paddingVertical:mvs(5),paddingHorizontal:mvs(20),borderRadius:mvs(6)}}  onPress={onAdd}>
+            <Row style={{gap:mvs(5)}}>
+            <Icon
+              name={'shoppingcart'}
+              size={mvs(20)}
+              color={colors.black}
+            />
+            <Regular color={colors.black} label={'1'}/>
+            </Row>
+          </TouchableOpacity>
+        ) : (
+          <View />
+        )}
+
       </Row>
     </View>
   );
