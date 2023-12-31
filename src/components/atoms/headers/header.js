@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import Medium from 'typography/medium-text';
 import { Row } from '../row';
 import Regular from 'typography/regular-text';
+import { navigate } from 'navigation/navigation-ref';
 const Header = ({
   style = {},
   mtop = 0,
@@ -48,7 +49,7 @@ const Header = ({
           <View />
         )}
         {cart ? (
-          <TouchableOpacity onPress={onCart} style={{backgroundColor:colors.primary,paddingVertical:mvs(5),paddingHorizontal:mvs(20),borderRadius:mvs(6)}}  onPress={onAdd}>
+          <TouchableOpacity style={styles.cartContainer} onPress={()=> navigate('Cart')}>
             <Row style={{gap:mvs(5)}}>
             <Icon
               name={'shoppingcart'}
@@ -83,4 +84,5 @@ const styles = StyleSheet.create({
     color: colors.black,
   },
   back: {},
+  cartContainer:{backgroundColor:colors.primary,paddingVertical:mvs(5),paddingHorizontal:mvs(20),borderRadius:mvs(6)}
 });
