@@ -17,16 +17,16 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import Feather from 'react-native-vector-icons/Feather';
 import {Checkbox} from 'components/atoms/checkbox';
 import Light from 'typography/light-text';
+import { navigate } from 'navigation/navigation-ref';
 const Profile = props => {
   const {t} = i18n;
   const [value, setValue] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [select, setSelect] = React.useState('unkown');
-  const data = [];
-  const renderCarItem = ({item}) => <></>;
+ 
   return (
     <View style={styles.container}>
-      <Header title={t('Profile')} />
+      <Header back={true} title={t('Profile')} />
       <KeyboardAvoidScrollview
         contentContainerStyle={styles.contentContainerStyle}>
         <Row style={{alignItems: 'center'}}>
@@ -146,7 +146,7 @@ const Profile = props => {
           <Light color={colors.black} label={'I want to receive news and service updates'} />
         </Row>
         <PrimaryButton containerStyle={styles.saveBtn} title='Save Changes'/>
-        <TouchableOpacity style={styles.signOutContainer}>
+        <TouchableOpacity onPress={()=> navigate('Login')} style={styles.signOutContainer}>
         <Medium label={'Sign out'} color={colors.black} fontSize={mvs(18)}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.signOutContainer}>

@@ -5,7 +5,9 @@ import { colors } from 'config/colors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.white,
+    paddingHorizontal:mvs(20)
+
   },
   contentContainerStyle: {
     flex: 1,
@@ -16,18 +18,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: mvs(20),
     paddingTop: mvs(40),
   },
-  linkContainer: {
-    flex: 1,
-    alignItems: 'flex-start',
-    marginTop: mvs(36),
-    backgroundColor: colors.secondary,
-    width: width,
-    borderTopLeftRadius: mvs(15),
-    borderTopRightRadius: mvs(15),
-    alignSelf: 'center',
-    paddingTop: mvs(30),
-    paddingHorizontal: mvs(20),
-  },
+
   name: {
     alignSelf: 'center',
     fontSize: mvs(24),

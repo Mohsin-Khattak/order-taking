@@ -1,27 +1,21 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Header1x2x from 'components/atoms/headers/header-1x-2x';
 import { useFormik } from 'formik';
 import React from 'react';
 import { View } from 'react-native';
 import Geocoder from 'react-native-geocoding';
 
-import messaging from '@react-native-firebase/messaging';
 import { PrimaryButton } from 'components/atoms/buttons';
-import PrimaryInput, {
-  InputWithIcon,
-  PrimaryPhoneInput,
-} from 'components/atoms/inputs';
+import Header from 'components/atoms/headers/header';
+import PrimaryInput from 'components/atoms/inputs';
 import { KeyboardAvoidScrollview } from 'components/atoms/keyboard-avoid-scrollview';
 import OtpModalRenewPassword from 'components/molecules/modals/otp-modal-signup-renewpassword.js.js';
 import { useAppDispatch, useAppSelector } from 'hooks/use-store';
-import { onSignup } from 'services/api/auth-api-actions';
+import { navigate } from 'navigation/navigation-ref';
 import i18n from 'translation';
 import Medium from 'typography/medium-text';
-import { UTILS } from 'utils';
 import { signupFormValidation } from 'validations';
 import RootStackParamList from '../../types/navigation-types/root-stack';
 import styles from './styles';
-import Header from 'components/atoms/headers/header';
 Geocoder.init('AIzaSyCbFQqjZgQOWRMuQ_RpXU0kGAUIfJhDw98');
 
 type props = NativeStackScreenProps<RootStackParamList, 'Signup'>;
@@ -42,7 +36,6 @@ const Signup = (props: props) => {
     confirm_password: '',
     password: '',
     token: '',
-
   };
   const [loading, setLoading] = React.useState(false);
   const { values, errors, touched, setFieldValue, setFieldTouched, isValid } =
@@ -56,23 +49,7 @@ const Signup = (props: props) => {
 
   console.log('errors=>', errors);
   console.log('values=>', values);
-  React.useEffect(() => {
-    (async () => {
-      try {
-        const addressComponent = await UTILS._returnAddress(location?.latitude, location?.longitude);
-        // console.log('addressComponent=>', addressComponent);
-        setFieldValue('map_lat', location?.latitude);
-        setFieldValue('map_lng', location?.longitude);
-        setFieldValue('city', addressComponent?.city);
-        setFieldValue('state', addressComponent?.province);
-        setFieldValue('country', addressComponent?.country);
-      } catch (error) {
-        console.log('error in location address', error);
 
-      }
-    })()
-
-  }, []);
 
   return (
     <View style={styles.container}>
@@ -139,22 +116,23 @@ const Signup = (props: props) => {
             Object.keys(touched)?.length === 0
           }
           title={t('signup')}
-          onPress={() => {
-            messaging()
-              .getToken()
-              .then(fcmToken => {
-                console.log('fcmToken=>', fcmToken);
-                dispatch(
-                  onSignup(
-                    { ...values, token: fcmToken },
-                    setLoading,
-                    props,
-                    setOtpModalVisible,
-                  ),
-                );
-              })
-              .catch(error => console.log(error));
-          }}
+          // onPress={() => {
+          //   messaging()
+          //     .getToken()
+          //     .then(fcmToken => {
+          //       console.log('fcmToken=>', fcmToken);
+          //       dispatch(
+          //         onSignup(
+          //           { ...values, token: fcmToken },
+          //           setLoading,
+          //           props,
+          //           setOtpModalVisible,
+          //         ),
+          //       );
+          //     })
+          //     .catch(error => console.log(error));
+          // }}
+          onPress={()=> navigate('Drawer')}
           containerStyle={styles.button}
         />
         <OtpModalRenewPassword

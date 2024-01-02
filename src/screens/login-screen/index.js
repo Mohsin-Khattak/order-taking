@@ -97,7 +97,8 @@ const LoginScreen = props => {
             />
             <TouchableOpacity
               style={{ alignSelf: 'flex-end', marginBottom: mvs(15) }}
-              onPress={() => navigate('ForgotPassword')}>
+              // onPress={() => navigate('ForgotPassword')}
+              >
               <Medium
                 label={t('Forgot password')}
                 style={{ textDecorationLine: 'underline' }}

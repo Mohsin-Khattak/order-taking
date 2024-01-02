@@ -10,6 +10,7 @@ import { FlatList, View } from 'react-native';
 import i18n from 'translation';
 import Bold from 'typography/bold-text';
 import styles from './styles';
+import { navigate } from 'navigation/navigation-ref';
 const Cart = props => {
   const user = useAppSelector(s => s?.user);
   const userInfo = user?.userInfo;
@@ -86,6 +87,7 @@ const Cart = props => {
       <Row
         style={{paddingHorizontal:mvs(20)}}>
         <PrimaryButton
+        onPress={()=> navigate('Delivery')}
           containerStyle={{width: '48%', height: mvs(40)}}
           title="Delivery"
         />

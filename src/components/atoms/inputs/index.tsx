@@ -14,6 +14,8 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import PhoneInput from 'react-native-phone-number-input';
 import Regular from 'typography/regular-text';
@@ -27,7 +29,8 @@ import DropdownModal from 'components/molecules/modals/dropdown-modal';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {t} from 'i18next';
 import {menue} from 'assets/images';
-type Item = {label: string; value: string};
+import { DatePicker } from '../date-picker';
+import moment from 'moment';
 type props = {
   isRequired?: boolean;
   onChangeText: (text: string) => void;
@@ -37,7 +40,7 @@ type props = {
   getCallingCode?: (text: string) => void | undefined;
   value?: string;
   label?: string;
-  items?: Item[];
+  items?: any[];
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<ViewStyle>;
@@ -49,13 +52,14 @@ type props = {
   defaultCode?: 'PK';
   layout?: 'first';
   isPassword?: boolean;
+  isCalendar?: boolean;
+  isTime?: boolean;
   editable?: boolean;
   disabledSearch?: boolean;
-  multiline?:boolean;
   error?: string;
   id?: any;
   mtop?: number;
-  children?: JSX.Element | JSX.Element[],
+  mode?: 'date' | 'time';
   keyboardType?: KeyboardTypeOptions | undefined;
   onBlur?: (e?: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 };
@@ -112,7 +116,7 @@ export const InputPresciption = (props: props) => {
             onPress={() => setSecure(!secure)}>
             <Feather
               size={25}
-              name={secure ? 'eye' : 'eye-off'}
+              name={secure ? 'eye-off' : 'eye'}
               color={colors.black}
             />
           </TouchableOpacity>
@@ -128,8 +132,9 @@ export const InputPresciption = (props: props) => {
 const PrimaryInput = (props: props) => {
   const [secure, setSecure] = useState(true);
   const {language} = useAppSelector(s => s.user);
+  const [isDatePickerVisible, setDatePickerVisible] = useState(false); // Add state for DateTimePickerModal
+  const [isTimePickerVisible, setTimePickerVisible] = useState(false); // Add state for DateTimePickerModal
   const {
-    children,
     onChangeText,
     value,
     style,
@@ -140,31 +145,53 @@ const PrimaryInput = (props: props) => {
     errorStyle,
     secureTextEntry,
     isPassword,
+    isCalendar,
+    isTime,
     keyboardType,
-    multiline,
     error,
+    mode,
     mainContainer,
     editable = true,
     onBlur = () => {},
     onPressIn = () => {},
     isRequired = false,
   } = props;
+  const showDatePicker = () => {
+    setDatePickerVisible(true);
+  };
+  const hideDatePicker = () => {
+   setDatePickerVisible(false) // Call onCancel when the modal is canceled
+  };
+  const handleConfirm = (date: Date) => {
+    onChangeText(moment(date).format('YYYY-MM-DD'));
+    hideDatePicker();
+  };
+  const showTimePicker = () => {
+    setTimePickerVisible(true);
+  };
+  const hideTimePicker = () => {
+   setTimePickerVisible(false) // Call onCancel when the modal is canceled
+  };
+  const handleTimeConfirm = (date: Date) => {
+    onChangeText(moment(date).format('hh:mm A'));
+    hideTimePicker();
+  };
   return (
     <View style={[mainContainer]}>
-      {/* <Regular label={label} style={[styles.labelStyle, labelStyle]}>
-        {isRequired ? <Regular color={colors.red} label={' *'} /> : null}
-      </Regular> */}
+      {label && (
+        <Regular label={label} style={[styles.labelStyle, labelStyle]}>
+          {isRequired ? <Regular color={colors.red} label={' *'} /> : null}
+        </Regular>
+      )}
       <View style={[styles.Container, containerStyle]}>
-       {children}
         <TextInput
           editable={editable}
-          multiline={multiline}
           onBlur={onBlur}
           onPressIn={onPressIn}
           keyboardType={keyboardType}
           secureTextEntry={isPassword && secure}
           value={value}
-          placeholderTextColor={`${colors.black}`}
+          placeholderTextColor={`${colors.placeholder}`}
           onChangeText={onChangeText}
           placeholder={placeholder}
           style={[
@@ -184,8 +211,156 @@ const PrimaryInput = (props: props) => {
             />
           </TouchableOpacity>
         )}
+        {isCalendar && (
+          <TouchableOpacity
+          onPress={showDatePicker}
+            style={styles.PasswordIcon}
+            // onPress={() => setSecure(!secure)}
+          >
+            <FontAwesome size={20} name={'calendar'} color={colors.primary} />
+          </TouchableOpacity>
+        )}
+        {isTime && (
+          <TouchableOpacity
+          onPress={()=>showTimePicker()}
+            style={styles.PasswordIcon}
+            // onPress={() => setSecure(!secure)}
+          >
+            <FontAwesome size={20} name={'clock-o'} color={colors.primary} />
+          </TouchableOpacity>
+        )}
+      </View>
+      <DatePicker
+      onConfirm={handleConfirm}
+      mode={mode}
+        isVisible={isDatePickerVisible}
+        onChangeText={(str) => {
+          setDatePickerVisible(false);
+          onChangeText(str);
+        }}
+        onCancel={hideDatePicker}
+      />
+      <DatePicker
+      onConfirm={handleTimeConfirm}
+      mode={mode}
+        isVisible={isTimePickerVisible}
+        onChangeText={(str) => {
+          setTimePickerVisible(false);
+          onChangeText(str);
+        }}
+        onCancel={hideTimePicker}
+      />
+      <Regular
+        label={error ? error : ''}
+        style={[styles.errorLabel, errorStyle]}
+      />
+
+    </View>
+  );
+};
+export const MessageInput = (props: props) => {
+  const {
+    onChangeText,
+    onPress = () => {},
+    value,
+    style,
+    placeholder = 'Write Message',
+    containerStyle,
+    isPassword,
+    keyboardType,
+    error,
+    onBlur = () => {},
+  } = props;
+  return (
+    <>
+      <Row style={[styles.messageContainer, containerStyle]}>
+        <TextInput
+          onBlur={onBlur}
+          keyboardType={keyboardType}
+          value={value}
+          placeholderTextColor={`${colors.black}50`}
+          onChangeText={onChangeText}
+          placeholder={placeholder}
+          style={[styles.textInput, style]}
+        />
+        {/* <TouchableOpacity style={styles.PasswordIcon} onPress={onPress}>
+          <Entypo size={20} name={'attachment'} color={colors.attachmentgray} />
+        </TouchableOpacity> */}
+      </Row>
+    </>
+  );
+};
+export const TextAreaInput = (props: props) => {
+  const [secure, setSecure] = useState(true);
+  const {language} = useAppSelector(s => s.user);
+  const {
+    onChangeText,
+    value,
+    style,
+    label,
+    placeholder = 'type here',
+    labelStyle,
+    containerStyle,
+    errorStyle,
+    secureTextEntry,
+    isPassword,
+    isCalendar,
+    keyboardType,
+    error,
+    mainContainer,
+    editable = true,
+    onBlur = () => {},
+    onPressIn = () => {},
+    isRequired = false,
+  } = props;
+  return (
+    <View style={[mainContainer]}>
+      {label && (
+        <Regular label={label} style={[styles.labelStyle, labelStyle]}>
+          {isRequired ? <Regular color={colors.red} label={' *'} /> : null}
+        </Regular>
+      )}
+      <View style={[styles.areaContainer, containerStyle]}>
+        <TextInput
+          numberOfLines={4}
+          multiline
+          editable={editable}
+          onBlur={onBlur}
+          onPressIn={onPressIn}
+          keyboardType={keyboardType}
+          secureTextEntry={isPassword && secure}
+          value={value}
+          placeholderTextColor={`${colors.placeholder}`}
+          onChangeText={onChangeText}
+          placeholder={placeholder}
+          style={[
+            styles.areatextInput,
+            style,
+            {textAlign: I18nManager.isRTL ? 'right' : 'left'},
+          ]}
+        />
+        {isPassword && (
+          <TouchableOpacity
+            style={styles.PasswordIcon}
+            onPress={() => setSecure(!secure)}>
+            <Feather
+              size={25}
+              name={secure ? 'eye' : 'eye-off'}
+              color={colors.black}
+            />
+          </TouchableOpacity>
+        )}
+        {isCalendar && (
+          <TouchableOpacity
+            style={styles.PasswordIcon}
+            // onPress={() => setSecure(!secure)}
+          >
+            <FontAwesome size={20} name={'calendar'} color={colors.black} />
+          </TouchableOpacity>
+        )}
       </View>
       <Regular
+      numberOfLines={2}
         label={error ? error : ''}
         style={[styles.errorLabel, errorStyle]}
       />
@@ -260,7 +435,7 @@ export const InputWithIcon = (props: props) => {
           onBlur();
         }}
         style={[styles.dropDownContainer, containerStyle]}>
-        <Medium label={value} />
+        <Medium label={items?.find(x => x?.id == id)?.title || ''} />
         <Feather size={25} name={'chevron-down'} color={colors.black} />
       </TouchableOpacity>
       <Regular label={error ? `${t(error)}` : ''} style={styles.errorLabel} />
@@ -296,7 +471,7 @@ export const PrimaryPhoneInput = (props: props) => {
     onBlur,
   } = props;
   return (
-    <>
+    <View>
       <PhoneInput
         ref={phoneRef}
         value={value}
@@ -314,7 +489,7 @@ export const PrimaryPhoneInput = (props: props) => {
         codeTextStyle={styles.codeTextStyle}
       />
       <Regular label={error} style={styles.errorLabel} />
-    </>
+    </View>
   );
 };
 export const SearchInput = (props: props) => {
@@ -336,8 +511,7 @@ export const SearchInput = (props: props) => {
     disabledSearch = true,
   } = props;
   return (
-    <View
-      style={[styles.searchContainer, containerStyle, {marginTop: mvs(mtop)}]}>
+    <View style={[styles.searchContainer, containerStyle]}>
       <TouchableOpacity
         disabled={disabledSearch}
         style={styles.searchIcon}
@@ -366,11 +540,27 @@ export const SearchInput = (props: props) => {
 
 const styles = StyleSheet.create({
   Container: {
-    borderWidth: mvs(0.7),
+    borderBottomWidth: mvs(0.7),
     borderColor: colors.primary,
-    height: mvs(50),
+    height: mvs(45),
     // paddingTop: mvs(7),
+    borderWidth: mvs(1),
     borderRadius: mvs(10),
+    // borderRadius: mvs(10),
+    width:'100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: mvs(10),
+    backgroundColor: colors.white,
+  },
+  areaContainer: {
+    borderBottomWidth: mvs(0.7),
+    borderColor: colors.primary,
+    height: mvs(90),
+    // paddingTop: mvs(7),
+    borderWidth: mvs(1),
+    borderRadius: mvs(20),
+    // borderRadius: mvs(10),
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: mvs(10),
@@ -412,11 +602,20 @@ const styles = StyleSheet.create({
   textInput: {
     color: colors.black,
     textAlignVertical: 'center',
-    fontSize: mvs(18),
+    fontSize: mvs(14),
     flex: 1,
-    height: mvs(50),
+    height: mvs(40),
     // width: mvs(275),
     padding: mvs(0),
+  },
+  areatextInput: {
+    color: colors.black,
+    textAlignVertical: 'top',
+    fontSize: mvs(12),
+    flex: 1,
+    height: '100%',
+    // width: mvs(275),
+    paddingVertical: mvs(5),
   },
   textInputStyle: {
     color: colors.primary,
@@ -479,5 +678,16 @@ const styles = StyleSheet.create({
     fontSize: mvs(10),
     marginBottom: mvs(10),
     marginHorizontal: mvs(5),
+  },
+  messageContainer: {
+    alignItems: 'flex-start',
+    paddingVertical: mvs(7),
+    borderRadius: mvs(10),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: mvs(10),
+    backgroundColor: '#F6F6F6',
+    marginTop: mvs(5),
+    flex: 1,
   },
 });

@@ -24,6 +24,7 @@ import SavedCards from 'screens/saved-cards';
 import Orders from 'screens/orders';
 import Profile from 'screens/profile';
 import Cart from 'screens/cart';
+import Delivery from 'screens/delivery';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
@@ -36,7 +37,7 @@ export const RootNavigator = () => {
         barStyle={'dark-content'}
       />
       <Stack.Navigator
-        initialRouteName="Drawer"
+        initialRouteName="Splash"
         screenOptions={horizontalAnimation}>
         <Stack.Group>
           <Stack.Screen name="Splash" component={Splash} />
@@ -45,6 +46,7 @@ export const RootNavigator = () => {
           <Stack.Screen name="SavedCards" component={SavedCards} />
           <Stack.Screen name="SavedAddress" component={SavedAddress} />
           <Stack.Screen name="SavedVehicles" component={SavedVehicles} />
+          <Stack.Screen name="Delivery" component={Delivery} />
           <Stack.Screen name="Cart" component={Cart} />
           <Stack.Screen name="Orders" component={Orders} />
           <Stack.Screen name="Profile" component={Profile} />
