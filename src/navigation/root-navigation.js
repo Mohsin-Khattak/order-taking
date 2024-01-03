@@ -25,6 +25,7 @@ import Orders from 'screens/orders';
 import Profile from 'screens/profile';
 import Cart from 'screens/cart';
 import Delivery from 'screens/delivery';
+import Pickup from 'screens/pickup';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
@@ -47,6 +48,7 @@ export const RootNavigator = () => {
           <Stack.Screen name="SavedAddress" component={SavedAddress} />
           <Stack.Screen name="SavedVehicles" component={SavedVehicles} />
           <Stack.Screen name="Delivery" component={Delivery} />
+          <Stack.Screen name="Pickup" component={Pickup} />
           <Stack.Screen name="Cart" component={Cart} />
           <Stack.Screen name="Orders" component={Orders} />
           <Stack.Screen name="Profile" component={Profile} />

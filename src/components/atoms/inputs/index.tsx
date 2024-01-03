@@ -532,7 +532,8 @@ export const SearchInput = (props: props) => {
         disabled={disabledSearch}
         style={styles.searchIcon}
         onPress={() => {}}>
-        <Image source={menue} style={{height: mvs(15), width: mvs(25)}} />
+        {/* <Image source={menue} style={{height: mvs(15), width: mvs(25)}} /> */}
+<MaterialIcons name='qr-code-scanner' size={25} color={colors.black} />
       </TouchableOpacity>
     </View>
   );
@@ -648,12 +649,12 @@ const styles = StyleSheet.create({
     marginHorizontal: mvs(5),
   },
   searchContainer: {
-    height: mvs(52),
+    height: mvs(45),
     borderRadius: mvs(15),
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: mvs(16.5),
-    backgroundColor: colors.white,
+    backgroundColor: colors.border,
     alignItems: 'center',
     // ...colors.shadow,
   },

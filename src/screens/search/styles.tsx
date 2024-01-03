@@ -21,5 +21,14 @@ const styles = StyleSheet.create({
     marginLeft: mvs(6),
     width: mvs(11),
   },
+  contentContainerStyle: {
+    flexGrow: 1,
+  paddingHorizontal:mvs(20),
+    // paddingTop: mvs(20),
+    justifyContent:'space-between'
+
+  
+  },
+
 });
 export default styles;

@@ -92,6 +92,7 @@ const Cart = props => {
           title="Delivery"
         />
         <PrimaryButton
+        onPress={()=> navigate('Pickup')}
           containerStyle={{width: '48%', height: mvs(40)}}
           title="Pickup"
         />

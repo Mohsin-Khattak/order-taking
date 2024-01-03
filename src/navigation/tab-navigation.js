@@ -63,6 +63,7 @@ const BottomTab = createNativeStackNavigator();
 const TabNavigator = () => {
   return (
     <Tab.Navigator
+    
       screenOptions={({ route }) => ({
         headerShown: false,
         unmountOnBlur: true,

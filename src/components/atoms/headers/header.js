@@ -1,13 +1,13 @@
-import { useNavigation } from '@react-navigation/native';
-import { colors } from 'config/colors';
-import { mvs } from 'config/metrices';
+import {useNavigation} from '@react-navigation/native';
+import {colors} from 'config/colors';
+import {mvs} from 'config/metrices';
 import React from 'react';
-import { I18nManager, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {I18nManager, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Medium from 'typography/medium-text';
-import { Row } from '../row';
+import {Row} from '../row';
 import Regular from 'typography/regular-text';
-import { navigate } from 'navigation/navigation-ref';
+import {navigate} from 'navigation/navigation-ref';
 const Header = ({
   style = {},
   mtop = 0,
@@ -15,54 +15,47 @@ const Header = ({
   back = true,
   onAdd,
   onCart,
-  cart=false,
-  add=false,
+  cart = false,
+  add = false,
   ...props
 }) => {
   const navigation = useNavigation();
   return (
     <View style={[styles.container, style]}>
-      <Row style={{alignItems: 'center',}}>
-        <Row style={{alignItems: 'center',gap:mvs(20)}}>
-        {back ? (
-          <TouchableOpacity onPress={() => navigation?.goBack()}>
-            <Icon
-              name={I18nManager.isRTL ? 'arrowright' : 'arrowleft'}
-              size={mvs(20)}
-              color={colors.black}
-            />
-          </TouchableOpacity>
-        ) : (
-          <View />
-        )}
-        <Medium fontSize={mvs(20)} label={title} style={[styles.title]} />
+      <Row style={{alignItems: 'center'}}>
+        <Row style={{alignItems: 'center', gap: mvs(20)}}>
+          {back ? (
+            <TouchableOpacity onPress={() => navigation?.goBack()}>
+              <Icon
+                name={I18nManager.isRTL ? 'arrowright' : 'arrowleft'}
+                size={mvs(20)}
+                color={colors.black}
+              />
+            </TouchableOpacity>
+          ) : (
+            <View />
+          )}
+          <Medium fontSize={mvs(20)} label={title} style={[styles.title]} />
         </Row>
         {add ? (
           <TouchableOpacity onPress={onAdd}>
-            <Icon
-              name={'plus'}
-              size={mvs(20)}
-              color={colors.black}
-            />
+            <Icon name={'plus'} size={mvs(20)} color={colors.black} />
           </TouchableOpacity>
         ) : (
           <View />
         )}
         {cart ? (
-          <TouchableOpacity style={styles.cartContainer} onPress={()=> navigate('Cart')}>
-            <Row style={{gap:mvs(5)}}>
-            <Icon
-              name={'shoppingcart'}
-              size={mvs(20)}
-              color={colors.black}
-            />
-            <Regular color={colors.black} label={'1'}/>
+          <TouchableOpacity
+            style={styles.cartContainer}
+            onPress={() => navigate('Cart')}>
+            <Row style={{gap: mvs(5)}}>
+              <Icon name={'shoppingcart'} size={mvs(20)} color={colors.black} />
+              <Regular color={colors.black} label={'1'} />
             </Row>
           </TouchableOpacity>
         ) : (
           <View />
         )}
-
       </Row>
     </View>
   );
@@ -73,8 +66,8 @@ const styles = StyleSheet.create({
     // backgroundColor: colors.primary,
     paddingHorizontal: mvs(22),
     paddingVertical: mvs(15),
-    borderBottomColor:colors.gray,
-    borderBottomWidth:1
+    borderBottomColor: colors.gray,
+    borderBottomWidth: 1,
   },
   empty: {
     width: mvs(10),
@@ -84,5 +77,10 @@ const styles = StyleSheet.create({
     color: colors.black,
   },
   back: {},
-  cartContainer:{backgroundColor:colors.primary,paddingVertical:mvs(5),paddingHorizontal:mvs(20),borderRadius:mvs(6)}
+  cartContainer: {
+    backgroundColor: colors.border,
+    paddingVertical: mvs(5),
+    paddingHorizontal: mvs(20),
+    borderRadius: mvs(6),
+  },
 });

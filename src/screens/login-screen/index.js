@@ -88,7 +88,6 @@ const LoginScreen = props => {
                   : undefined
               }
               placeholder={t('Password')}
-              label={t('password')}
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
               value={values.password}
