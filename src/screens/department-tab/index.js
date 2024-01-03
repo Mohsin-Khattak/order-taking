@@ -1,15 +1,13 @@
-import Header1x2x from 'components/atoms/headers/header-1x-2x';
-import {useAppDispatch, useAppSelector} from 'hooks/use-store';
-import React from 'react';
-import {View} from 'react-native';
-import i18n from 'translation';
-import styles from './styles';
-import Header from 'components/atoms/headers/header';
-import Bold from 'typography/bold-text';
-import {mvs} from 'config/metrices';
-import {FlatList} from 'react-native';
-import {EmptyList} from 'components/atoms/empty-list';
+import { EmptyList } from 'components/atoms/empty-list';
+import HeaderTab from 'components/atoms/headers/header-tab';
 import DepartmentCard from 'components/molecules/department-card';
+import { mvs } from 'config/metrices';
+import { useAppDispatch, useAppSelector } from 'hooks/use-store';
+import React from 'react';
+import { FlatList, View } from 'react-native';
+import i18n from 'translation';
+import Bold from 'typography/bold-text';
+import styles from './styles';
 const DepartmentTab = props => {
   const user = useAppSelector(s => s?.user);
   const userInfo = user?.userInfo;
@@ -42,7 +40,7 @@ const DepartmentTab = props => {
 
   return (
     <View style={styles.container}>
-      <Header title={t('General Goods')} cart={true} back={false}  />
+      <HeaderTab title={t('General Goods')} cart={true} menu={true}  />
 
       <Bold
         style={{paddingVertical: mvs(10), paddingHorizontal: mvs(20)}}

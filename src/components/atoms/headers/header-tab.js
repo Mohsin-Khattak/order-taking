@@ -1,19 +1,23 @@
-import { useNavigation } from '@react-navigation/native';
-import { colors } from 'config/colors';
-import { mvs } from 'config/metrices';
+import {useNavigation} from '@react-navigation/native';
+import {colors} from 'config/colors';
+import {mvs} from 'config/metrices';
 import React from 'react';
-import { I18nManager, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {I18nManager, StyleSheet, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import Feather from 'react-native-vector-icons/Feather';
 import Medium from 'typography/medium-text';
-import { Row } from '../row';
-const Header = ({
+import {Row} from '../row';
+import Regular from 'typography/regular-text';
+import {navigate} from 'navigation/navigation-ref';
+const HeaderTab = ({
   style = {},
   mtop = 0,
   title,
-  back = true,
+  back = false,
+  menu=false,
   onAdd,
-  
-  
+  onCart,
+  cart = false,
   add = false,
   ...props
 }) => {
@@ -21,11 +25,11 @@ const Header = ({
   return (
     <View style={[styles.container, style]}>
       <Row style={{alignItems: 'center'}}>
-        <Row style={{alignItems: 'center', gap: mvs(20)}}>
-          {back ? (
-            <TouchableOpacity onPress={() => navigation?.goBack()}>
-              <Icon
-                name={I18nManager.isRTL ? 'arrowright' : 'arrowleft'}
+      
+          {menu ? (
+            <TouchableOpacity onPress={() => {}}>
+              <Feather
+                name={'menu'}
                 size={mvs(20)}
                 color={colors.black}
               />
@@ -33,11 +37,18 @@ const Header = ({
           ) : (
             <View />
           )}
+        
           <Medium fontSize={mvs(20)} label={title} style={[styles.title]} />
-        </Row>
-        {add ? (
-          <TouchableOpacity onPress={onAdd}>
-            <Icon name={'plus'} size={mvs(20)} color={colors.black} />
+
+      
+        {cart ? (
+          <TouchableOpacity
+            style={styles.cartContainer}
+            onPress={() => navigate('Cart')}>
+            <Row style={{gap: mvs(5)}}>
+              <Icon name={'shoppingcart'} size={mvs(20)} color={colors.black} />
+              <Regular color={colors.black} label={'1'} />
+            </Row>
           </TouchableOpacity>
         ) : (
           <View />
@@ -46,7 +57,7 @@ const Header = ({
     </View>
   );
 };
-export default React.memo(Header);
+export default React.memo(HeaderTab);
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: colors.primary,
@@ -66,7 +77,7 @@ const styles = StyleSheet.create({
   cartContainer: {
     backgroundColor: colors.border,
     paddingVertical: mvs(5),
-    paddingHorizontal: mvs(20),
+    paddingHorizontal: mvs(10),
     borderRadius: mvs(6),
   },
 });

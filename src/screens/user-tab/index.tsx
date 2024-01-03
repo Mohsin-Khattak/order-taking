@@ -53,7 +53,7 @@ const UserTab = (props: props) => {
 
       <TouchableOpacity
         style={styles.itemtabs}
-        // onPress={() => props?.navigation?.navigate('UpdatePassword')}
+        onPress={() => props?.navigation?.navigate('SavedAddress')}
         >
         <FontAwesome name="info-circle" size={mvs(22)} color={colors.primary} />
         <Regular style={styles.itemText1} label={`${t('About the app')}`} />
@@ -61,7 +61,7 @@ const UserTab = (props: props) => {
 
       <TouchableOpacity
         style={styles.itemtabs}
-        // onPress={() => props?.navigation?.navigate('UpdateProfile')}
+        onPress={() => props?.navigation?.navigate('SavedVehicles')}
         >
         <Ionicons name="reader-outline" size={mvs(22)} color={colors.primary} />
         <Regular

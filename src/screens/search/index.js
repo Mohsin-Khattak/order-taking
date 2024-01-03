@@ -6,6 +6,7 @@ import { mvs } from 'config/metrices';
 import React from 'react';
 import { FlatList, View } from 'react-native';
 import styles from './styles';
+import HeaderTab from 'components/atoms/headers/header-tab';
 
 const Search = props => {
   const {navigation} = props;
@@ -89,7 +90,7 @@ const Search = props => {
 
   return (
     <View style={{...styles.container}}>
-      <Header title={'Search Product'} back={false} cart={true} />
+      <HeaderTab title={'Search Product'} menu={true} cart={true} />
       <View style={{paddingHorizontal: mvs(20),}}>
         <SearchInput containerStyle={{marginTop: mvs(10),marginBottom:mvs(20)}} placeholder="Search" />
 </View>
