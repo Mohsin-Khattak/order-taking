@@ -94,9 +94,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.bookingapp.bookme"
+    namespace "com.ordertaking"
     defaultConfig {
-        applicationId "com.bookingapp.bookme"
+        applicationId "com.ordertaking"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "91601287529",
-    "project_id": "bookme-d1f6b",
-    "storage_bucket": "bookme-d1f6b.appspot.com"
+    "project_number": "284182587092",
+    "project_id": "ordertaking-92150",
+    "storage_bucket": "ordertaking-92150.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:91601287529:android:75d1f047603069991a65f8",
+        "mobilesdk_app_id": "1:284182587092:android:11c163195aff6256e9bd41",
         "android_client_info": {
-          "package_name": "com.bookingapp.bookme"
+          "package_name": "com.ordertaking"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "91601287529-bo6pksk2uub7di8djp3gpf9ea3og4nol.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAYIN2lA1cXqfcuVzVGdjuMxnwji0M9TJs"
+          "current_key": "AIzaSyBpkRsLMBuXpsWdIgXSwP0mDtviwNE03-A"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "91601287529-bo6pksk2uub7di8djp3gpf9ea3og4nol.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
