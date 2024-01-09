@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   body: {
-    paddingVertical: mvs(10),
+    flex:1,
+    // paddingVertical: mvs(10),
     paddingHorizontal: mvs(20),
   },
 
@@ -20,7 +21,8 @@ const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     flexGrow: 1,
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+
   },
 });
 export default styles;

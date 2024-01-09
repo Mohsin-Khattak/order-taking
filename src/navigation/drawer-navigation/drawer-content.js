@@ -25,5 +25,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.gray,
   },
-  header: { height: mvs(120), width: width - 60, backgroundColor: colors.green }
+  header: { height: mvs(120), width: width -50, backgroundColor: colors.green }
 });

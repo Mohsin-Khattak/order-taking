@@ -41,9 +41,6 @@ const App = () => {
   if (loading) {
     return null;
   }
-
-
-
   return (
     <SafeAreaProvider style={{ flex: 1 }}>
       <Provider store={store}>

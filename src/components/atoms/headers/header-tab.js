@@ -27,7 +27,7 @@ const HeaderTab = ({
       <Row style={{alignItems: 'center'}}>
       
           {menu ? (
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => navigation?.toggleDrawer()}>
               <Feather
                 name={'menu'}
                 size={mvs(20)}
@@ -60,9 +60,8 @@ const HeaderTab = ({
 export default React.memo(HeaderTab);
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: colors.primary,
-    paddingHorizontal: mvs(22),
-    paddingVertical: mvs(15),
+    paddingHorizontal: mvs(20),
+    paddingVertical: mvs(10),
     borderBottomColor: colors.gray,
     borderBottomWidth: 1,
   },

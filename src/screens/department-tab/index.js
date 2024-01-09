@@ -31,8 +31,8 @@ const DepartmentTab = props => {
     <DepartmentCard
       item={item}
       onPress={() =>
-        props?.navigation?.navigate('WhereToMoveScreen', {
-          service_id: item?.id,
+        props?.navigation?.navigate('SubCategories', {
+          title: item?.title,
         })
       }
     />

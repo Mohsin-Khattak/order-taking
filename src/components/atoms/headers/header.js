@@ -12,8 +12,6 @@ const Header = ({
   title,
   back = true,
   onAdd,
-  
-  
   add = false,
   ...props
 }) => {
@@ -50,8 +48,8 @@ export default React.memo(Header);
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: colors.primary,
-    paddingHorizontal: mvs(22),
-    paddingVertical: mvs(15),
+    paddingHorizontal: mvs(20),
+    paddingVertical: mvs(10),
     borderBottomColor: colors.gray,
     borderBottomWidth: 1,
   },

@@ -2,7 +2,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {colors} from 'config/colors';
 import * as React from 'react';
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {StatusBar, StyleSheet, View,Platform} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import LanguageScreen from 'screens/language-screen';
 import LoginScreen from 'screens/login-screen';
@@ -26,12 +26,13 @@ import Profile from 'screens/profile';
 import Cart from 'screens/cart';
 import Delivery from 'screens/delivery';
 import Pickup from 'screens/pickup';
+import SubCategories from 'screens/sub-categories';
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{flex: 0, backgroundColor: colors.primary}} />
+      <SafeAreaView style={{flex: 0, backgroundColor: colors.white  }} />
       <StatusBar
         translucent={false}
         backgroundColor={colors.white}
@@ -47,6 +48,7 @@ export const RootNavigator = () => {
           <Stack.Screen name="SavedCards" component={SavedCards} />
           <Stack.Screen name="SavedAddress" component={SavedAddress} />
           <Stack.Screen name="SavedVehicles" component={SavedVehicles} />
+          <Stack.Screen name="SubCategories" component={SubCategories} />
           <Stack.Screen name="Delivery" component={Delivery} />
           <Stack.Screen name="Pickup" component={Pickup} />
           <Stack.Screen name="Cart" component={Cart} />
