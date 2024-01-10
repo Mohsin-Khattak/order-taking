@@ -40,7 +40,7 @@ const SearchItemCard = ({
           label={item?.title}
         />
         </View>
-        <Bold style={{color:colors.black}} label={item?.price}/>
+        <Bold style={{color:colors.black}} label={`$ ${item?.price}`}/>
         <PrimaryButton 
            onPress={() => {
             dispatch(

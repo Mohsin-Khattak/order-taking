@@ -17,14 +17,14 @@ const SubCategories = props => {
     {
       id: 1,
       title: 'Pepto Bismol Maximum Strength Liquid 4oz',
-      price: '$ 400',
+      price: '400',
       image:
         'https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFrZXJ5fGVufDB8fDB8fHww',
     },
     {
       id: 2,
       title: 'Candy',
-      price: '$ 400',
+      price: '400',
 
       image:
         'https://w0.peakpx.com/wallpaper/768/855/HD-wallpaper-breads-bakery-graphy-food-healthy-bread-thumbnail.jpg',
@@ -32,49 +32,49 @@ const SubCategories = props => {
     {
       id: 3,
       title: 'Candy',
-      price: '$ 400',
+      price: '400',
       image:
         'https://media.istockphoto.com/id/1442992545/photo/homemade-feta-cheese-puff-muffins-with-spinach-closeup-in-the-maffin-pan-horizontal-top-view.webp?b=1&s=170667a&w=0&k=20&c=OHf1oe8pnfmdIMsB68QvCm4Z0uC2WfBd15S_ATWL65A=',
     },
     {
       id: 4,
       title: 'Alernative Snacks',
-      price: '$ 400',
+      price: '400',
       image:
         'https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFrZXJ5fGVufDB8fDB8fHww',
     },
     {
       id: 5,
       title: 'Candy',
-      price: '$ 400',
+      price: '400',
       image:
         'https://w0.peakpx.com/wallpaper/768/855/HD-wallpaper-breads-bakery-graphy-food-healthy-bread-thumbnail.jpg',
     },
     {
       id: 6,
       title: 'Candy',
-      price: '$ 400',
+      price: '400',
       image:
         'https://media.istockphoto.com/id/1442992545/photo/homemade-feta-cheese-puff-muffins-with-spinach-closeup-in-the-maffin-pan-horizontal-top-view.webp?b=1&s=170667a&w=0&k=20&c=OHf1oe8pnfmdIMsB68QvCm4Z0uC2WfBd15S_ATWL65A=',
     },
     {
       id: 7,
       title: 'Alernative Snacks',
-      price: '$ 400',
+      price: '400',
       image:
         'https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFrZXJ5fGVufDB8fDB8fHww',
     },
     {
       id: 8,
       title: 'Candy',
-      price: '$ 400',
+      price: '400',
       image:
         'https://w0.peakpx.com/wallpaper/768/855/HD-wallpaper-breads-bakery-graphy-food-healthy-bread-thumbnail.jpg',
     },
     {
       id: 9,
       title: 'Candy',
-      price: '$ 400',
+      price: '400',
       image:
         'https://media.istockphoto.com/id/1442992545/photo/homemade-feta-cheese-puff-muffins-with-spinach-closeup-in-the-maffin-pan-horizontal-top-view.webp?b=1&s=170667a&w=0&k=20&c=OHf1oe8pnfmdIMsB68QvCm4Z0uC2WfBd15S_ATWL65A=',
     },

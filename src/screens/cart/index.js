@@ -16,6 +16,11 @@ const Cart = props => {
   const {cart} = useAppSelector(s => s);
   const cart_list = cart?.cart;
   console.log('cart cart check===>',cart?.cart);
+  let totalPrice = 0;
+
+cart_list.forEach(item => {
+  totalPrice += item.price * item.qty;
+});
   const userInfo = user?.userInfo;
   const dispatch = useAppDispatch();
   const [count,setCount]=React.useState(0)
@@ -72,7 +77,7 @@ const Cart = props => {
           paddingVertical: mvs(10),
         }}>
         <Bold fontSize={mvs(18)} label={'Total Amount'} />
-        <Bold fontSize={mvs(18)} label={'$ 1,059'} />
+        <Bold fontSize={mvs(18)} label={`$ ${totalPrice}`} />
       </Row>
 
       <FlatList

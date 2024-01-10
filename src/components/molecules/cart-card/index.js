@@ -57,6 +57,9 @@ const CartCard = ({
     // setHoveredOnce(false);
   };
 
+  const totalPrice= item?.qty * item?.price;
+  console.log('total price chekc===>',totalPrice);
+
   return (
     <Row style={styles.container}>
       <TouchableOpacity
@@ -69,7 +72,7 @@ const CartCard = ({
       <Image style={styles.backgroundImage} source={{uri: item?.image}} />
       <View style={styles.infoContainer}>
         <Regular numberOfLines={3} color={colors.black} label={item?.title} />
-        <Light color={colors.black} label={item?.price} />
+        <Light color={colors.black} label={`$ ${item?.price}`} />
         {/* <Light color={colors.black} label={'5 oz'} /> */}
       </View>
       <View style={{alignSelf: 'center'}}>
@@ -86,7 +89,7 @@ const CartCard = ({
           style={styles.priceText}
           fontSize={mvs(18)}
           color={colors.black}
-          label={item.price}
+          label={`$ ${totalPrice}`}
         />
       </View>
     </Row>
