@@ -1,27 +1,33 @@
+import { PrimaryButton } from 'components/atoms/buttons';
+import { colors } from 'config/colors';
+import { mvs } from 'config/metrices';
+import { useAppDispatch, useAppSelector } from 'hooks/use-store';
 import React from 'react';
 import {
   Image,
-  ImageBackground,
   StyleSheet,
-  TouchableOpacity,
-  View,
+  View
 } from 'react-native';
+import { setAddToCart, setRemoveFromCart } from 'store/reducers/cart';
 import i18n from 'translation';
-import {colors} from 'config/colors';
-import {mvs} from 'config/metrices';
-import Regular from 'typography/regular-text';
-import { PrimaryButton } from 'components/atoms/buttons';
 import Bold from 'typography/bold-text';
+import Regular from 'typography/regular-text';
 
 const SearchItemCard = ({
   item,
   index,
   style,
   onPress = () => {},
-  onPressCart = () => {},
 }) => {
   const {t} = i18n;
   const Icon = item.icon;
+  const dispatch = useAppDispatch();
+  const {cart} = useAppSelector(s => s);
+  const cart_list = cart?.cart;
+  const cartItem = cart_list?.find(
+    x => x?.id === item?.id,
+  );
+  console.log('cart item check===>',cartItem);
   return (
     <View style={styles.container}>
       <Image style={styles.backgroundImage} source={{uri: item?.image}} />
@@ -35,7 +41,19 @@ const SearchItemCard = ({
         />
         </View>
         <Bold style={{color:colors.black}} label={item?.price}/>
-        <PrimaryButton title='Add to cart' containerStyle={{height:mvs(40),marginTop:mvs(5)}}/>
+        <PrimaryButton 
+           onPress={() => {
+            dispatch(
+              cartItem
+                ? setRemoveFromCart(
+                   item
+                  )
+                : setAddToCart(item),
+            );
+      
+          }}
+          title={t(!cartItem ? 'Add to cart' : 'Remove')}
+        containerStyle={{height:mvs(40),marginTop:mvs(5)}}/>
       </View>
     </View>
   );

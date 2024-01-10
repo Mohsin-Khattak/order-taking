@@ -40,7 +40,7 @@ const DepartmentTab = props => {
 
   return (
     <View style={styles.container}>
-      <HeaderTab title={t('General Goods')} cart={true} menu={true}  />
+      <HeaderTab title={t('General Goods')} cartt={true} menu={true}  />
 
       <Bold
         style={{paddingVertical: mvs(10), paddingHorizontal: mvs(20)}}

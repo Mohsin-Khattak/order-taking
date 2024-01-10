@@ -13,11 +13,15 @@ import styles from './styles';
 import { navigate } from 'navigation/navigation-ref';
 const Cart = props => {
   const user = useAppSelector(s => s?.user);
+  const {cart} = useAppSelector(s => s);
+  const cart_list = cart?.cart;
+  console.log('cart cart check===>',cart?.cart);
   const userInfo = user?.userInfo;
   const dispatch = useAppDispatch();
   const [count,setCount]=React.useState(0)
   const [loading, setLoading] = React.useState(false);
   const {t} = i18n;
+
   const data = [
     {
       id: 1,
@@ -77,7 +81,7 @@ const Cart = props => {
           !loading && <EmptyList label={'You have not any departments yet'} />
         }
         showsVerticalScrollIndicator={false}
-        data={data || []}
+        data={cart_list || []}
         renderItem={renderCarItem}
       />
       <View

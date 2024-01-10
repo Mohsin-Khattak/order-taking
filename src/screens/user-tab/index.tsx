@@ -100,7 +100,6 @@ const UserTab = (props: props) => {
         style={{
           flex: 1,
           justifyContent: 'flex-end',
-
           width: '100%',
           paddingBottom: mvs(60),
         }}>

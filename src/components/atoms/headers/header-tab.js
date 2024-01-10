@@ -9,19 +9,23 @@ import Medium from 'typography/medium-text';
 import {Row} from '../row';
 import Regular from 'typography/regular-text';
 import {navigate} from 'navigation/navigation-ref';
+import { useAppSelector } from 'hooks/use-store';
 const HeaderTab = ({
   style = {},
   mtop = 0,
   title,
+  cartQuantity=0,
   back = false,
   menu=false,
   onAdd,
   onCart,
-  cart = false,
+  cartt = false,
   add = false,
   ...props
 }) => {
   const navigation = useNavigation();
+  const {cart} = useAppSelector(s => s);
+  const cart_list = cart?.cart;
   return (
     <View style={[styles.container, style]}>
       <Row style={{alignItems: 'center'}}>
@@ -41,13 +45,13 @@ const HeaderTab = ({
           <Medium fontSize={mvs(20)} label={title} style={[styles.title]} />
 
       
-        {cart ? (
+        {cartt ? (
           <TouchableOpacity
             style={styles.cartContainer}
             onPress={() => navigate('Cart')}>
             <Row style={{gap: mvs(5)}}>
               <Icon name={'shoppingcart'} size={mvs(20)} color={colors.black} />
-              <Regular color={colors.black} label={'1'} />
+              <Regular color={colors.black} label={cart_list.length || 0} />
             </Row>
           </TouchableOpacity>
         ) : (
